@@ -7,10 +7,9 @@ on:
 jobs:
       build:
         runs-on: ubuntu-latest
-           
         steps:
             - name: Checkout files
-         	    uses: actions/checkout@v3
+         	     uses: actions/checkout@v3
             - name: SETUP NODE.JS ENVIRONMENT
               uses: actions/setup-node@v3.3.0
               with: node-version:16.x
