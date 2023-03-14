@@ -1,11 +1,10 @@
+name:TODO BE
 
-1)name:TODO BE
-
-2)on:
+on:
       push:
            branches:
                  -main
-3)jobs:
+jobs:
       build:
            runs-on:ubuntu-latest
            
