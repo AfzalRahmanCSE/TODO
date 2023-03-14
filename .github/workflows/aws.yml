@@ -9,48 +9,41 @@ on:
       - main
 
 jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout files
-              uses: actions/checkout@v3
-            - name: SETUP NODE.JS ENVIRONMENT
-              uses: actions/setup-node@v3.3.0
-              with: node-version:16.x
-            - name: NPM INSTALL AND NPM BUILD
-              run:   |
+  build:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout files
+         uses: actions/checkout@v3
+       - name: SETUP NODE.JS ENVIRONMENT
+         uses: actions/setup-node@v3.3.0
+         with: node-version:16.x
+       - name: NPM INSTALL AND NPM BUILD
+         run:   |
                npm install
                npm run build
                             
-           env:
-                CI: true      
+         env:
+           CI: true      
 
   
 
-        deploy:
-          needs: [build] 
-          runs-on: ubuntu-latest
-          steps:
+  deploy:
+    needs: [build] 
+      runs-on: ubuntu-latest
+      steps:
 
-             -name: SSH deploy
-              uses: appleboy/ssh-action@master
-              with: 
-                 host: ${{secrets.HOST}}
-                 username: ${{secrets.USERNAME}}
-                 key: ${{secrets.KEY}}
-                 port: $${secrets.PORT}}
+       
+       - name: COPY BUILD FILES TO EC2
+         uses: garygrassgarten/github-action-scp@release
+         with:
+           host: ${{ secrets.HOST_DNS}} 
+           username: ${{ secrets.USERNAME}}
+           password: ${{ secrets.PASSWORD}}                       
 
-             -name: COPY BUILD FILES TO EC2
-              uses: garygrassgarten/github-action-scp@release
-              with:
-                host: ${{ secrets.HOST_DNS}} 
-                username: ${{ secrets.USERNAME}}
-                password: ${{ secrets.PASSWORD}}                       
-
-                script:    | 
-                          npm install -g pm2
-                          git pull origin main
-                          npm install
-                          npm run build
-                          pm2 restart index.js
+         script:    | 
+                 npm install -g pm2
+                 git pull origin main
+                 npm install
+                 npm run build
+                 pm2 restart index.js
 
