@@ -25,14 +25,10 @@ jobs:
          env:
            CI: true      
 
-  
-
   deploy:
     needs: [build] 
       runs-on: ubuntu-latest
       steps:
-
-       
        - name: COPY BUILD FILES TO EC2
          uses: garygrassgarten/github-action-scp@release
          with:
