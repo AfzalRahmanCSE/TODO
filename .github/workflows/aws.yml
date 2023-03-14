@@ -9,7 +9,7 @@ jobs:
         runs-on: ubuntu-latest
            
         steps:
-            - name: CHECKOUT THE FILES
+            - name: Checkout files
          	    uses: actions/checkout@v3
             - name: SETUP NODE.JS ENVIRONMENT
               uses: actions/setup-node@v3.3.0
