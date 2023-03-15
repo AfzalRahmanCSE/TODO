@@ -29,6 +29,6 @@ jobs:
        remote: /www/var/html/  
        host: 52.203.90.126  
        username: ubuntu
-       password: 68734724
+       password: 687347
        
 
