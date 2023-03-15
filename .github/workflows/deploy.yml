@@ -20,7 +20,6 @@ jobs:
     - name: npm install and npm build
       run: |
         npm install
-        npm build
         pwd
         
     - name: copy Build files to EC2
