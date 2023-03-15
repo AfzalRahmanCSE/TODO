@@ -26,8 +26,8 @@ jobs:
     - name: copy Build files to EC2
       uses: garygrossgarten/github-action-scp@release
       with: 
-       local:/home/runner/work/TODO/TODO/dist/erp
-       remote: /var/www/html
+       local: /home/runner/work/TODO/TODO/
+       remote: /www/var/html/  
        host: 52.203.90.126  
        username: ubuntu
        password: 68734724
