@@ -12,21 +12,21 @@ jobs:
   runs-on: ubuntu-latest
   
   steps:
-    -name: checkout the files 
-     uses: actions/checkout@v3
-    -name: Setting nodejs Environment
-     uses: actions/setup-node@v3.3.0
+    - name: checkout the files 
+      uses: actions/checkout@v3
+    - name: Setting nodejs Environment
+      uses: actions/setup-node@v3.3.0
      
-    -name: npm install and npm build
-     run: |
+    - name: npm install and npm build
+      run: |
         npm install
         npm build
         pwd
         
-    -name: copy Build files to EC2
-     uses: garygrossgarten/github-action-scp@release
-     with: 
-       local:/home/runner/work/KT-Devops/Kt-Devops/dist/erp
+    - name: copy Build files to EC2
+      uses: garygrossgarten/github-action-scp@release
+      with: 
+       local:/home/runner/work/TODO/TODO/dist/erp
        remote: /var/www/html
        host: 52.203.90.126  
        username: ubuntu
