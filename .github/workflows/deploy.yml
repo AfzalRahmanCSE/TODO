@@ -26,7 +26,7 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with: 
        local: /home/runner/work/TODO/TODO/
-       remote: /www/var/html/  
+       remote: /home/ubuntu/TODO/
        host: 52.203.90.126  
        username: ubuntu
        password: 687347
